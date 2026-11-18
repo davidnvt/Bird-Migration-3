@@ -9,7 +9,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --bg-body: #f0f4fa; --text-primary: #1a2c3e; --b1-color: #e6b422; --b2-color: #2c9c6e; --c1-color: #d45c8c; --c2-color: #9b59b6; --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.05); --radius-xl: 28px; --radius-lg: 20px; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(145deg, #eef2f9 0%, #e2eaf5 100%); height: 100vh; overflow: hidden; font-size: 0.8rem; } /* reduced base font */
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(145deg, #eef2f9 0%, #e2eaf5 100%); height: 100vh; overflow: hidden; font-size: 0.8rem; }
         .dashboard { display: flex; height: 100%; width: 100%; }
         .reading-section { width: 58%; background: rgba(255, 255, 255, 0.96); overflow-y: auto; padding: 1.4rem 1.8rem; border-radius: 0 var(--radius-xl) var(--radius-xl) 0; box-shadow: 10px 0 30px -10px rgba(0, 0, 0, 0.08); border-right: 1px solid rgba(0, 0, 0, 0.05); }
         .quiz-section { width: 42%; background: #f9fbfd; overflow-y: auto; padding: 1.4rem 1.3rem; border-left: 1px solid rgba(0, 0, 0, 0.05); }
@@ -31,14 +31,13 @@
         .dynamic-tooltip b { color: #f7d44a; display: block; margin-bottom: 4px; font-size: 0.8rem; }
         .dynamic-tooltip i { font-size: 0.6rem; color: #bfd7e5; display: inline-block; margin-bottom: 4px; }
         .dynamic-tooltip .synonym { margin-top: 5px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 4px; color: #b9e6c9; font-size: 0.65rem; }
-        p { font-family: 'Merriweather', serif; font-size: 0.85rem; line-height: 1.55; color: #1f2f3c; margin-bottom: 1rem; text-align: justify; } /* slightly reduced paragraph size */
+        p { font-family: 'Merriweather', serif; font-size: 0.85rem; line-height: 1.55; color: #1f2f3c; margin-bottom: 1rem; text-align: justify; }
         .vocab-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 1rem; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05); font-size: 0.7rem; }
         .vocab-table th { background: linear-gradient(135deg, #1f3e48 0%, #2c5a6e 100%); color: white; padding: 8px 8px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
         .vocab-table td { padding: 8px 8px; border-bottom: 1px solid #eef2f8; transition: background 0.2s ease; }
         .word-cell { font-weight: 700; }
         .level-badge { display: inline-block; padding: 1px 6px; border-radius: 20px; font-size: 0.6rem; font-weight: 600; margin-left: 5px; }
 
-        /* ===== Quiz styles (from q.html) ===== */
         .quiz-card { background: white; border-radius: 22px; margin-bottom: 24px; padding: 1.1rem 1.3rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); border: 1px solid #eef2f8; }
         .section-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.8rem; color: #1f3e48; border-left: 4px solid #2c7a5e; padding-left: 10px; }
         .headings-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; background: #fefaf0; padding: 12px; border-radius: 28px; border: 1px solid #cbdca0; min-height: 70px; }
@@ -62,26 +61,10 @@
         .toast-msg { position: fixed; bottom: 20px; right: 20px; background: #1e2f3c; color: #ffecb3; padding: 8px 16px; border-radius: 40px; font-size: 0.7rem; z-index: 2000; animation: fadeOut 2s forwards; }
         @keyframes fadeOut { 0% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
 
-        /* Para with drop */
         .para-with-drop { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.2rem; }
         .para-label { font-weight: 800; font-size: 0.9rem; background: #eef2f9; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 30px; flex-shrink: 0; color: #2c7a5e; }
         .para-content { flex: 1; }
-        .drop-slot-passage {
-            background: #f8f9fc;
-            border: 2px dashed #b9c4cf;
-            border-radius: 24px;
-            min-width: 200px;
-            max-width: 100%;
-            text-align: left;
-            padding: 6px 14px;
-            font-weight: 600;
-            font-size: 0.7rem;
-            color: #1e5f4b;
-            display: inline-block;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: 0.1s;
-        }
+        .drop-slot-passage { background: #f8f9fc; border: 2px dashed #b9c4cf; border-radius: 24px; min-width: 200px; max-width: 100%; text-align: left; padding: 6px 14px; font-weight: 600; font-size: 0.7rem; color: #1e5f4b; display: inline-block; margin-bottom: 10px; cursor: pointer; transition: 0.1s; }
         .drop-slot-passage.drag-over { background: #dff0e8; border-color: #2c9c6e; }
         .drop-slot-passage.filled { background: #e6f4ea; border: 2px solid #2c9c6e; color: #1f5e3a; cursor: grab; }
         .drop-slot-passage.dragging { opacity: 0.4; }
@@ -106,21 +89,20 @@
             <div class="dot"><span style="background: var(--c2-color);"></span> C2 (Proficient)</div>
         </div>
 
-        <!-- Reading Passage with drop slots for headings -->
         <!-- Paragraph A -->
-        <div class="para-with-drop"><div class="para-label">A</div><div class="para-content"><span class="drop-slot-passage" data-para="1" id="drop-1"></span><p>Birds have many <span class="v b1" data-word="unique" data-level="b1">unique</span> design <span class="v b2" data-word="features" data-level="b2">features</span> that enable them to perform such amazing <span class="v b2" data-word="feats" data-level="b2">feats</span> of <span class="v b2" data-word="endurance" data-level="b2">endurance</span>. They are <span class="v b2" data-word="equipped" data-level="b2">equipped</span> with lightweight, <span class="v b1" data-word="hollow" data-level="b1">hollow</span> bones, <span class="v c1" data-word="intricately" data-level="c1">intricately</span> designed <span class="v b1" data-word="feathers" data-level="b1">feathers</span> providing both lift and <span class="v b2" data-word="thrust" data-level="b2">thrust</span> for <span class="v b1" data-word="rapid" data-level="b1">rapid</span> flight, <span class="v b2" data-word="navigation" data-level="b2">navigation</span> systems <span class="v b2" data-word="superior" data-level="b2">superior</span> to any that man has developed, and an <span class="v c1" data-word="ingenious" data-level="c1">ingenious</span> heat-conserving design that, among other things, concentrates all blood <span class="v b2" data-word="circulation" data-level="b2">circulation</span> beneath layers of warm, <span class="v b2" data-word="waterproof" data-level="b2">waterproof</span> <span class="v b2" data-word="plumage" data-level="b2">plumage</span>, leaving them fit to face life in the <span class="v b2" data-word="harshest" data-level="b2">harshest</span> of climates. Their <span class="v c1" data-word="respiratory" data-level="c1">respiratory</span> systems have to perform efficiently during sustained flights at <span class="v b2" data-word="altitude" data-level="b2">altitude</span>, so they have a system of extracting oxygen from their lungs that far <span class="v b2" data-word="exceeds" data-level="b2">exceeds</span> that of any other animal. During the later stages of the summer <span class="v b2" data-word="breeding season" data-level="b2">breeding season</span>, when food is <span class="v b1" data-word="plentiful" data-level="b1">plentiful</span>, their bodies can <span class="v b2" data-word="accumulate" data-level="b2">accumulate</span> considerable <span class="v b2" data-word="layers" data-level="b2">layers</span> of fat, to provide <span class="v b2" data-word="sufficient" data-level="b2">sufficient</span> energy for their long <span class="v b2" data-word="migratory" data-level="b2">migratory</span> flights.</p></div></div>
+        <div class="para-with-drop"><div class="para-label">A</div><div class="para-content"><span class="drop-slot-passage" data-para="1" id="drop-1"></span><p>Birds have many <span class="v b1" data-word="unique" data-level="b1">unique</span> design <span class="v b2" data-word="features" data-level="b2">features</span> that <span class="v b2" data-word="enable" data-level="b2">enable</span> them to <span class="v b2" data-word="perform" data-level="b2">perform</span> such amazing <span class="v b2" data-word="feats" data-level="b2">feats</span> of <span class="v b2" data-word="endurance" data-level="b2">endurance</span>. They are <span class="v b2" data-word="equipped" data-level="b2">equipped</span> with lightweight, <span class="v b1" data-word="hollow" data-level="b1">hollow</span> bones, <span class="v c1" data-word="intricately" data-level="c1">intricately</span> designed <span class="v b1" data-word="feathers" data-level="b1">feathers</span> providing both lift and <span class="v b2" data-word="thrust" data-level="b2">thrust</span> for <span class="v b1" data-word="rapid" data-level="b1">rapid</span> flight, <span class="v b2" data-word="navigation" data-level="b2">navigation</span> systems <span class="v b2" data-word="superior" data-level="b2">superior</span> to any that man has developed, and an <span class="v c1" data-word="ingenious" data-level="c1">ingenious</span> heat-conserving design that, among other things, concentrates all blood <span class="v b2" data-word="circulation" data-level="b2">circulation</span> <span class="v b2" data-word="beneath" data-level="b2">beneath</span> <span class="v b2" data-word="layer" data-level="b2">layer</span>s of warm, <span class="v b2" data-word="waterproof" data-level="b2">waterproof</span> <span class="v b2" data-word="plumage" data-level="b2">plumage</span>, leaving them fit to face life in the <span class="v b2" data-word="harshest" data-level="b2">harshest</span> of climates. Their <span class="v c1" data-word="respiratory" data-level="c1">respiratory</span> systems have to perform efficiently during <span class="v b2" data-word="sustained" data-level="b2">sustained</span> flights at <span class="v b2" data-word="altitude" data-level="b2">altitude</span>, so they have a system of <span class="v b2" data-word="extract" data-level="b2">extract</span>ing oxygen from their lungs that far <span class="v b2" data-word="exceeds" data-level="b2">exceeds</span> that of any other animal. During the later <span class="v b2" data-word="stage" data-level="b2">stage</span>s of the summer <span class="v b2" data-word="breeding season" data-level="b2">breeding season</span>, when food is <span class="v b1" data-word="plentiful" data-level="b1">plentiful</span>, their bodies can <span class="v b2" data-word="accumulate" data-level="b2">accumulate</span> <span class="v b2" data-word="considerable" data-level="b2">considerable</span> <span class="v b2" data-word="layers" data-level="b2">layers</span> of fat, to provide <span class="v b2" data-word="sufficient" data-level="b2">sufficient</span> energy for their long <span class="v b2" data-word="migratory" data-level="b2">migratory</span> flights.</p></div></div>
 
         <!-- Paragraph B -->
-        <div class="para-with-drop"><div class="para-label">B</div><div class="para-content"><span class="drop-slot-passage" data-para="2" id="drop-2"></span><p>The <span class="v b2" data-word="fundamental" data-level="b2">fundamental</span> reason that birds <span class="v b2" data-word="migrate" data-level="b2">migrate</span> is to find <span class="v b2" data-word="adequate" data-level="b2">adequate</span> food during the winter months when it is in short <span class="v b2" data-word="supply" data-level="b2">supply</span>. This particularly applies to birds that <span class="v b2" data-word="breed" data-level="b2">breed</span> in the <span class="v b2" data-word="temperate" data-level="b2">temperate</span> and Arctic regions of the Northern Hemisphere, where food is <span class="v b1" data-word="abundant" data-level="b1">abundant</span> during the short growing season. Many species can <span class="v b2" data-word="tolerate" data-level="b2">tolerate</span> cold temperatures if food is <span class="v b1" data-word="plentiful" data-level="b1">plentiful</span>, but when food is not available, they must migrate. However, <span class="v c1" data-word="intriguing" data-level="c1">intriguing</span> questions remain.</p></div></div>
+        <div class="para-with-drop"><div class="para-label">B</div><div class="para-content"><span class="drop-slot-passage" data-para="2" id="drop-2"></span><p>The <span class="v b2" data-word="fundamental" data-level="b2">fundamental</span> reason that birds <span class="v b2" data-word="migrate" data-level="b2">migrate</span> is to find <span class="v b2" data-word="adequate" data-level="b2">adequate</span> food during the winter months when it is in short <span class="v b2" data-word="supply" data-level="b2">supply</span>. This particularly applies to birds that <span class="v b2" data-word="breed" data-level="b2">breed</span> in the <span class="v b2" data-word="temperate" data-level="b2">temperate</span> and Arctic regions of the <span class="v c1" data-word="Northern Hemisphere" data-level="c1">Northern Hemisphere</span>, where food is <span class="v b1" data-word="abundant" data-level="b1">abundant</span> during the short growing season. Many species can <span class="v b2" data-word="tolerate" data-level="b2">tolerate</span> cold temperatures if food is <span class="v b1" data-word="plentiful" data-level="b1">plentiful</span>, but when food is not available, they must migrate. However, <span class="v c1" data-word="intriguing" data-level="c1">intriguing</span> questions remain.</p></div></div>
 
         <!-- Paragraph C -->
-        <div class="para-with-drop"><div class="para-label">C</div><div class="para-content"><span class="drop-slot-passage" data-para="3" id="drop-3"></span><p>One <span class="v b2" data-word="puzzling" data-level="b2">puzzling</span> fact is that many birds journey much further than would be necessary just to find food and good weather. Nobody knows, for instance, why British <span class="v b2" data-word="swallows" data-level="b2">swallows</span>, which could presumably survive equally well if they spent the winter in <span class="v c1" data-word="equatorial" data-level="c1">equatorial</span> Africa, instead fly several thousands of miles further to their preferred winter home in South Africa’s Cape Province. Another mystery involves the huge migrations performed by Arctic <span class="v b2" data-word="terns" data-level="b2">terns</span> and <span class="v b2" data-word="shorebirds" data-level="b2">shorebirds</span> that <span class="v b2" data-word="breed" data-level="b2">breed</span> close to Polar Regions. In general, the further north a migrant species <span class="v b2" data-word="breeds" data-level="b2">breeds</span>, the further south it spends the winter. For Arctic terns, this <span class="v c1" data-word="necessitates" data-level="c1">necessitates</span> an annual round trip of 25,000 miles. Yet, en route to their final destination in <span class="v c2" data-word="far-flung" data-level="c2">far-flung</span> southern <span class="v b2" data-word="latitudes" data-level="b2">latitudes</span>, all these individuals overfly other areas of seemingly suitable habitat <span class="v b2" data-word="spanning" data-level="b2">spanning</span> two <span class="v b2" data-word="hemispheres" data-level="b2">hemispheres</span>. While we may not fully understand birds’ reasons for going to particular places, we can <span class="v b2" data-word="marvel" data-level="b2">marvel</span> at their feats.</p></div></div>
+        <div class="para-with-drop"><div class="para-label">C</div><div class="para-content"><span class="drop-slot-passage" data-para="3" id="drop-3"></span><p>One <span class="v b2" data-word="puzzling" data-level="b2">puzzling</span> fact is that many birds <span class="v b2" data-word="journey" data-level="b2">journey</span> much further than would be necessary just to find food and good weather. Nobody knows, for instance, why British <span class="v b2" data-word="swallows" data-level="b2">swallows</span>, which could presumably survive equally well if they spent the winter in <span class="v c1" data-word="equatorial" data-level="c1">equatorial</span> Africa, instead fly several thousands of miles further to their preferred winter home in South Africa’s Cape Province. Another mystery <span class="v b2" data-word="involve" data-level="b2">involve</span>s the huge migrations performed by Arctic <span class="v b2" data-word="terns" data-level="b2">terns</span> and <span class="v b2" data-word="shorebirds" data-level="b2">shorebirds</span> that <span class="v b2" data-word="breed" data-level="b2">breed</span> close to Polar Regions. In general, the further north a migrant species <span class="v b2" data-word="breeds" data-level="b2">breeds</span>, the further south it spends the winter. For Arctic terns, this <span class="v c1" data-word="necessitates" data-level="c1">necessitates</span> an annual round trip of 25,000 miles. Yet, en route to their final destination in <span class="v c2" data-word="far-flung" data-level="c2">far-flung</span> southern <span class="v b2" data-word="latitudes" data-level="b2">latitudes</span>, all these individuals overfly other areas of seemingly suitable habitat <span class="v b2" data-word="spanning" data-level="b2">spanning</span> two <span class="v b2" data-word="hemispheres" data-level="b2">hemispheres</span>. While we may not fully understand birds’ reasons for going to particular places, we can <span class="v b2" data-word="marvel" data-level="b2">marvel</span> at their feats.</p></div></div>
 
         <!-- Paragraph D -->
-        <div class="para-with-drop"><div class="para-label">D</div><div class="para-content"><span class="drop-slot-passage" data-para="4" id="drop-4"></span><p>One of the greatest mysteries is how young birds know how to find the traditional wintering areas without <span class="v c1" data-word="parental guidance" data-level="c1">parental guidance</span>. Very few adults migrate with <span class="v b2" data-word="juveniles" data-level="b2">juveniles</span> in <span class="v b2" data-word="tow" data-level="b2">tow</span>, and youngsters may even have little or no <span class="v c2" data-word="inkling" data-level="c2">inkling</span> of their parents’ appearance. A familiar example is that of the <span class="v b2" data-word="cuckoo" data-level="b2">cuckoo</span>, which lays its eggs in another species’ nest and never <span class="v c1" data-word="reencounters" data-level="c1">reencounters</span> its young. It is <span class="v c1" data-word="mind-boggling" data-level="c1">mind-boggling</span> to consider that, once raised by its <span class="v b2" data-word="host" data-level="b2">host</span> species, the young cuckoo makes its way to <span class="v b2" data-word="ancestral" data-level="b2">ancestral</span> <span class="v b2" data-word="wintering grounds" data-level="b2">wintering grounds</span> in the tropics before returning <span class="v c1" data-word="single-handedly" data-level="c1">single-handedly</span> to northern Europe the next season to seek out a mate among its kind. The obvious <span class="v b2" data-word="implication" data-level="b2">implication</span> is that it <span class="v b2" data-word="inherits" data-level="b2">inherits</span> from its parents an <span class="v c2" data-word="inbuilt" data-level="c2">inbuilt</span> route map and <span class="v b2" data-word="direction-finding" data-level="b2">direction-finding</span> <span class="v b2" data-word="capability" data-level="b2">capability</span>, as well as a mental image of what another cuckoo looks like. Yet nobody has the slightest idea as to how this is possible.</p></div></div>
+        <div class="para-with-drop"><div class="para-label">D</div><div class="para-content"><span class="drop-slot-passage" data-para="4" id="drop-4"></span><p>One of the greatest mysteries is how young birds know how to find the traditional wintering areas without <span class="v c1" data-word="parental guidance" data-level="c1">parental guidance</span>. Very few adults migrate with <span class="v b2" data-word="juveniles" data-level="b2">juveniles</span> in <span class="v b2" data-word="tow" data-level="b2">tow</span>, and youngsters may even have little or no <span class="v c2" data-word="inkling" data-level="c2">inkling</span> of their parents’ appearance. A familiar example is that of the <span class="v b2" data-word="cuckoo" data-level="b2">cuckoo</span>, which lays its eggs in another species’ nest and never <span class="v c1" data-word="reencounters" data-level="c1">reencounters</span> its young. It is <span class="v c1" data-word="mind-boggling" data-level="c1">mind-boggling</span> to consider that, once <span class="v b2" data-word="raise" data-level="b2">raise</span>d by its <span class="v b2" data-word="host" data-level="b2">host</span> species, the young cuckoo makes its way to <span class="v b2" data-word="ancestral" data-level="b2">ancestral</span> <span class="v b2" data-word="wintering grounds" data-level="b2">wintering grounds</span> in the tropics before returning <span class="v c1" data-word="single-handedly" data-level="c1">single-handedly</span> to northern Europe the next season to seek out a mate among its kind. The obvious <span class="v b2" data-word="implication" data-level="b2">implication</span> is that it <span class="v b2" data-word="inherits" data-level="b2">inherits</span> from its parents an <span class="v c2" data-word="inbuilt" data-level="c2">inbuilt</span> route map and <span class="v b2" data-word="direction-finding" data-level="b2">direction-finding</span> <span class="v b2" data-word="capability" data-level="b2">capability</span>, as well as a mental image of what another cuckoo looks like. Yet nobody has the <span class="v b2" data-word="slight" data-level="b2">slight</span>est idea as to how this is possible.</p></div></div>
 
         <!-- Paragraph E -->
-        <div class="para-with-drop"><div class="para-label">E</div><div class="para-content"><span class="drop-slot-passage" data-para="5" id="drop-5"></span><p>Mounting evidence has confirmed that birds use the positions of the sun and stars to obtain compass directions. They also seem to be able to detect the earth’s <span class="v b2" data-word="magnetic field" data-level="b2">magnetic field</span>, probably due to having minute crystals of <span class="v c1" data-word="magnetite" data-level="c1">magnetite</span> in the region of their brains. However, <span class="v b2" data-word="accurate" data-level="b2">accurate</span> navigation also requires an awareness of position and time, especially when lost. Experiments have shown that after being taken thousands of miles over an unfamiliar landmass, birds are still capable of returning rapidly to nest sites. Such phenomenal powers are the product of computing several sophisticated cues, including an inborn map of the night sky and the pull of the earth’s magnetic field. How the birds use their ‘instruments’ remains unknown, but one thing is clear: they see the world with a superior sensory perception to ours. Most small birds migrate at night and take their direction from the position of the setting sun. However, as well as seeing the sun go down, they also seem to see the plane of <span class="v c2" data-word="polarized light" data-level="c2">polarized light</span> caused by it, which <span class="v c1" data-word="calibrates" data-level="c1">calibrates</span> their compass. Travelling at night provides other benefits. Daytime <span class="v b2" data-word="predators" data-level="b2">predators</span> are avoided and the danger of <span class="v c1" data-word="dehydration" data-level="c1">dehydration</span> due to flying for long periods in warm, sunlit skies is reduced. Furthermore, at night the air is generally cool and less <span class="v c1" data-word="turbulent" data-level="c1">turbulent</span> and so <span class="v c1" data-word="conducive" data-level="c1">conducive</span> to sustained, stable flight.</p></div></div>
+        <div class="para-with-drop"><div class="para-label">E</div><div class="para-content"><span class="drop-slot-passage" data-para="5" id="drop-5"></span><p><span class="v c1" data-word="Mounting" data-level="c1">Mounting</span> evidence has confirmed that birds use the positions of the sun and stars to <span class="v b2" data-word="obtain" data-level="b2">obtain</span> <span class="v b2" data-word="compass" data-level="b2">compass</span> directions. They also seem to be able to <span class="v b2" data-word="detect" data-level="b2">detect</span> the earth’s <span class="v b2" data-word="magnetic field" data-level="b2">magnetic field</span>, probably due to having <span class="v b2" data-word="minute" data-level="b2">minute</span> crystals of <span class="v c1" data-word="magnetite" data-level="c1">magnetite</span> in the region of their brains. However, <span class="v b2" data-word="accurate" data-level="b2">accurate</span> <span class="v b2" data-word="navigation" data-level="b2">navigation</span> also requires an awareness of position and time, especially when lost. Experiments have shown that after being taken thousands of miles over an unfamiliar <span class="v c1" data-word="landmass" data-level="c1">landmass</span>, birds are still <span class="v b2" data-word="capable of" data-level="b2">capable of</span> returning <span class="v b1" data-word="rapid" data-level="b1">rapid</span>ly to nest sites. Such <span class="v c1" data-word="phenomenal" data-level="c1">phenomenal</span> powers are the product of computing several <span class="v c1" data-word="sophisticated" data-level="c1">sophisticated</span> <span class="v c1" data-word="cues" data-level="c1">cues</span>, including an inborn map of the night sky and the pull of the earth’s magnetic field. How the birds use their ‘instruments’ remains unknown, but one thing is clear: they see the world with a <span class="v b2" data-word="superior" data-level="b2">superior</span> <span class="v c1" data-word="sensory" data-level="c1">sensory</span> <span class="v c1" data-word="perception" data-level="c1">perception</span> to ours. Most small birds migrate at night and take their direction from the position of the setting sun. However, as well as seeing the sun go down, they also seem to see the plane of <span class="v c2" data-word="polarized light" data-level="c2">polarized light</span> caused by it, which <span class="v c1" data-word="calibrates" data-level="c1">calibrates</span> their compass. Travelling at night provides other benefits. Daytime <span class="v b2" data-word="predators" data-level="b2">predators</span> are avoided and the danger of <span class="v c1" data-word="dehydration" data-level="c1">dehydration</span> due to flying for long periods in warm, sunlit skies is reduced. Furthermore, at night the air is generally cool and less <span class="v c1" data-word="turbulent" data-level="c1">turbulent</span> and so <span class="v c1" data-word="conducive" data-level="c1">conducive</span> to <span class="v b2" data-word="sustained" data-level="b2">sustained</span>, <span class="v b2" data-word="stable" data-level="b2">stable</span> flight.</p></div></div>
 
         <!-- Paragraph F -->
         <div class="para-with-drop"><div class="para-label">F</div><div class="para-content"><span class="drop-slot-passage" data-para="6" id="drop-6"></span><p>Nevertheless, all journeys involve considerable risk, and part of the skill in arriving safely is setting off at the right time. This means <span class="v b2" data-word="accurate" data-level="b2">accurate</span> weather <span class="v b2" data-word="forecasting" data-level="b2">forecasting</span> and <span class="v c1" data-word="utilizing" data-level="c1">utilizing</span> favourable winds. Birds are <span class="v c1" data-word="adept" data-level="c1">adept</span> at both, and, in laboratory tests, some have been shown to <span class="v b2" data-word="detect" data-level="b2">detect</span> the <span class="v b2" data-word="minute" data-level="b2">minute</span> difference in <span class="v c2" data-word="barometric pressure" data-level="c2">barometric pressure</span> between the floor and ceiling of a room. Often birds react to weather changes before there is any <span class="v b1" data-word="visible" data-level="b1">visible</span> sign of them. <span class="v b2" data-word="Lapwings" data-level="b2">Lapwings</span>, which feed on grassland, <span class="v b2" data-word="flee" data-level="b2">flee</span> west from the Netherlands to the British Isles, France, and Spain at the <span class="v b2" data-word="onset" data-level="b2">onset</span> of a <span class="v b2" data-word="cold snap" data-level="b2">cold snap</span>. When the ground surface freezes, the birds could starve. Yet they return to Holland ahead of a <span class="v b2" data-word="thaw" data-level="b2">thaw</span>, their arrival linked to a pressure change <span class="v c2" data-word="presaging" data-level="c2">presaging</span> an improvement in the weather.</p></div></div>
@@ -142,19 +124,18 @@
             <span id="scoreDisplay">0 / 13</span>
             <button class="reset-quiz" id="resetQuizBtn"><i class="fas fa-sync-alt"></i> Reset</button>
         </div>
-        <div class="quiz-header-brand" style="background:#eef2f9; border-radius:36px; padding:6px 12px; margin-bottom:14px; text-align:center; font-size:0.7rem; font-weight:500; width:100%;">
-            <i class="fas fa-chalkboard-teacher"></i> <strong>Nguyễn Văn Thắng - Academic Hub</strong> — <a href="https://www.facebook.com/nvtielts/" target="_blank">facebook.com/nvtielts</a>
-        </div>
         <h1 style="font-size:1.2rem; margin-bottom:0.2rem;"><i class="fas fa-question-circle"></i> Reading Comprehension</h1>
         <div id="quiz-container"></div>
     </div>
 </div>
 
 <script>
-    // ======================= VOCABULARY DATABASE (same as before) =======================
+    // ======================= VOCABULARY DATABASE =======================
     const vocabulary = [
         { w: "unique", lvl: "b1", en: "being the only one of its kind", vn: "Độc đáo, duy nhất", syn: "distinct, exclusive", ipa: "/juːˈniːk/" },
         { w: "features", lvl: "b2", en: "distinctive attributes or aspects", vn: "Đặc điểm", syn: "characteristics, traits", ipa: "/ˈfiː.tʃəz/" },
+        { w: "enable", lvl: "b2", en: "make able, give power to", vn: "Cho phép, làm có thể", syn: "allow, permit, empower", ipa: "/ɪˈneɪ.bəl/" },
+        { w: "perform", lvl: "b2", en: "carry out an action or task", vn: "Thực hiện, trình diễn", syn: "execute, accomplish, achieve", ipa: "/pəˈfɔːm/" },
         { w: "feats", lvl: "b2", en: "achievements requiring great skill", vn: "Kỳ tích", syn: "achievements, exploits", ipa: "/fiːts/" },
         { w: "endurance", lvl: "b2", en: "ability to withstand prolonged effort", vn: "Sức chịu đựng", syn: "stamina, resilience", ipa: "/ɪnˈdjʊə.rəns/" },
         { w: "equipped", lvl: "b2", en: "provided with necessary items", vn: "Được trang bị", syn: "furnished, supplied", ipa: "/ɪˈkwɪpt/" },
@@ -167,30 +148,39 @@
         { w: "superior", lvl: "b2", en: "higher in quality", vn: "Vượt trội", syn: "better, greater", ipa: "/suːˈpɪə.ri.ər/" },
         { w: "ingenious", lvl: "c1", en: "clever and inventive", vn: "Khéo léo, tài tình", syn: "inventive, clever", ipa: "/ɪnˈdʒiː.ni.əs/" },
         { w: "circulation", lvl: "b2", en: "movement of blood through body", vn: "Sự lưu thông", syn: "flow, motion", ipa: "/ˌsɜː.kjəˈleɪ.ʃən/" },
+        { w: "beneath", lvl: "b2", en: "under, below", vn: "Ở dưới, bên dưới", syn: "under, below, underneath", ipa: "/bɪˈniːθ/" },
+        { w: "layer", lvl: "b2", en: "a sheet or thickness of material", vn: "Lớp", syn: "stratum, coating, tier", ipa: "/ˈleɪ.ər/" },
         { w: "waterproof", lvl: "b2", en: "impervious to water", vn: "Không thấm nước", syn: "water-resistant, impermeable", ipa: "/ˈwɔː.tə.pruːf/" },
         { w: "plumage", lvl: "b2", en: "bird's feathers collectively", vn: "Bộ lông", syn: "feathers, down", ipa: "/ˈpluː.mɪdʒ/" },
         { w: "harshest", lvl: "b2", en: "most severe or cruel", vn: "Khắc nghiệt nhất", syn: "severest, toughest", ipa: "/ˈhɑː.ʃɪst/" },
         { w: "respiratory", lvl: "c1", en: "relating to breathing", vn: "Hô hấp", syn: "pulmonary, breathing", ipa: "/rɪˈspɪr.ə.tər.i/" },
+        { w: "sustained", lvl: "b2", en: "continuing for a long time", vn: "Kéo dài, liên tục", syn: "prolonged, continuous", ipa: "/səˈsteɪnd/" },
         { w: "altitude", lvl: "b2", en: "height above sea level", vn: "Độ cao", syn: "elevation, height", ipa: "/ˈæl.tɪ.tjuːd/" },
+        { w: "extract", lvl: "b2", en: "remove or take out", vn: "Chiết xuất, rút ra", syn: "remove, draw out, obtain", ipa: "/ɪkˈstrækt/" },
         { w: "exceeds", lvl: "b2", en: "is greater than", vn: "Vượt quá", syn: "surpasses, outstrips", ipa: "/ɪkˈsiːdz/" },
+        { w: "stage", lvl: "b2", en: "a point or period in a process", vn: "Giai đoạn", syn: "phase, period, step", ipa: "/steɪdʒ/" },
         { w: "breeding season", lvl: "b2", en: "time when animals reproduce", vn: "Mùa sinh sản", syn: "mating period, nesting season", ipa: "phrase" },
         { w: "plentiful", lvl: "b1", en: "existing in large amounts", vn: "Dồi dào", syn: "abundant, ample", ipa: "/ˈplen.tɪ.fəl/" },
         { w: "accumulate", lvl: "b2", en: "gather or build up", vn: "Tích lũy", syn: "amass, collect", ipa: "/əˈkjuː.mjə.leɪt/" },
+        { w: "considerable", lvl: "b2", en: "large in amount or degree", vn: "Đáng kể, lớn", syn: "substantial, significant", ipa: "/kənˈsɪd.ər.ə.bəl/" },
         { w: "layers", lvl: "b2", en: "sheets or levels", vn: "Lớp", syn: "strata, tiers", ipa: "/ˈleɪ.əz/" },
         { w: "sufficient", lvl: "b2", en: "enough, adequate", vn: "Đủ", syn: "ample, satisfactory", ipa: "/səˈfɪʃ.ənt/" },
         { w: "migratory", lvl: "b2", en: "moving from one region to another", vn: "Di cư", syn: "migrating, nomadic", ipa: "/ˈmaɪ.ɡrə.tər.i/" },
         { w: "fundamental", lvl: "b2", en: "forming a necessary base", vn: "Cơ bản", syn: "basic, essential", ipa: "/ˌfʌn.dəˈmen.təl/" },
-        { w: "migrate", lvl: "b2", en: "move seasonally", vn: "Di cư", syn: "relocate, travel", ipa: "/maɪˈɡreɪt/" },
+        { w: "migrate", lvl: "b2", en: "move seasonally from one region to another", vn: "Di cư", syn: "relocate, travel, journey", ipa: "/maɪˈɡreɪt/" },
         { w: "adequate", lvl: "b2", en: "enough, sufficient", vn: "Đủ", syn: "ample, satisfactory", ipa: "/ˈæd.ə.kwət/" },
         { w: "supply", lvl: "b2", en: "stock or amount available", vn: "Nguồn cung", syn: "provision, stock", ipa: "/səˈplaɪ/" },
         { w: "breed", lvl: "b2", en: "produce offspring; reproduce", vn: "Sinh sản, nuôi dưỡng", syn: "reproduce, mate", ipa: "/briːd/" },
         { w: "temperate", lvl: "b2", en: "mild climate region", vn: "Ôn đới", syn: "moderate, mild", ipa: "/ˈtem.pər.ət/" },
+        { w: "Northern Hemisphere", lvl: "c1", en: "half of Earth north of the equator", vn: "Bắc bán cầu", syn: "northern half of the globe", ipa: "phrase" },
         { w: "abundant", lvl: "b1", en: "plentiful", vn: "Dồi dào", syn: "plentiful, ample", ipa: "/əˈbʌn.dənt/" },
         { w: "tolerate", lvl: "b2", en: "endure hardship", vn: "Chịu đựng", syn: "bear, withstand", ipa: "/ˈtɒl.ər.eɪt/" },
         { w: "intriguing", lvl: "c1", en: "arousing curiosity", vn: "Hấp dẫn, lôi cuốn", syn: "fascinating, captivating", ipa: "/ɪnˈtriː.ɡɪŋ/" },
         { w: "puzzling", lvl: "b2", en: "confusing", vn: "Khó hiểu", syn: "baffling, perplexing", ipa: "/ˈpʌz.əl.ɪŋ/" },
+        { w: "journey", lvl: "b2", en: "travel from one place to another", vn: "Hành trình, di chuyển", syn: "travel, voyage, trip", ipa: "/ˈdʒɜː.ni/" },
         { w: "swallows", lvl: "b2", en: "small migratory birds", vn: "Chim nhạn", syn: "martins, hirundines", ipa: "/ˈswɒl.əʊz/" },
         { w: "equatorial", lvl: "c1", en: "near the equator", vn: "Xích đạo", syn: "tropical, equatorial", ipa: "/ˌek.wəˈtɔː.ri.əl/" },
+        { w: "involve", lvl: "b2", en: "include as a necessary part", vn: "Bao gồm, liên quan", syn: "include, entail, comprise", ipa: "/ɪnˈvɒlv/" },
         { w: "terns", lvl: "b2", en: "seabirds with long wings", vn: "Nhàn biển", syn: "sea swallows", ipa: "/tɜːnz/" },
         { w: "shorebirds", lvl: "b2", en: "birds that live near water", vn: "Chim ven bờ", syn: "waders, coastal birds", ipa: "/ˈʃɔː.bɜːdz/" },
         { w: "necessitates", lvl: "c1", en: "makes necessary", vn: "Đòi hỏi", syn: "requires, demands", ipa: "/nəˈses.ɪ.teɪts/" },
@@ -206,6 +196,7 @@
         { w: "cuckoo", lvl: "b2", en: "bird known for laying eggs in others' nests", vn: "Chim cu cu", syn: "cuckoo bird", ipa: "/ˈkʊk.uː/" },
         { w: "reencounters", lvl: "c1", en: "meets again", vn: "Gặp lại", syn: "meets again, reunites", ipa: "/ˌriː.ɪnˈkaʊn.təz/" },
         { w: "mind-boggling", lvl: "c1", en: "overwhelming, astonishing", vn: "Kinh ngạc, choáng váng", syn: "astounding, staggering", ipa: "/ˈmaɪndˌbɒɡ.əl.ɪŋ/" },
+        { w: "raise", lvl: "b2", en: "bring up, care for until grown", vn: "Nuôi dưỡng, nuôi lớn", syn: "rear, bring up, nurture", ipa: "/reɪz/" },
         { w: "host", lvl: "b2", en: "organism that harbors another", vn: "Vật chủ", syn: "host organism", ipa: "/həʊst/" },
         { w: "ancestral", lvl: "b2", en: "relating to ancestors", vn: "Tổ tiên", syn: "hereditary, traditional", ipa: "/ænˈses.trəl/" },
         { w: "wintering grounds", lvl: "b2", en: "places where birds spend winter", vn: "Khu vực trú đông", syn: "overwintering sites", ipa: "phrase" },
@@ -215,20 +206,32 @@
         { w: "inbuilt", lvl: "c2", en: "existing as a natural part", vn: "Vốn có", syn: "built-in, innate", ipa: "/ˈɪn.bɪlt/" },
         { w: "direction-finding", lvl: "b2", en: "ability to determine direction", vn: "Định hướng", syn: "orientation, navigation", ipa: "phrase" },
         { w: "capability", lvl: "b2", en: "ability to do something", vn: "Khả năng", syn: "capacity, competence", ipa: "/ˌkeɪ.pəˈbɪl.ə.ti/" },
+        { w: "slight", lvl: "b2", en: "small in degree, not considerable", vn: "Nhỏ, mức độ nhẹ", syn: "small, minor, negligible", ipa: "/slaɪt/" },
+        { w: "Mounting", lvl: "c1", en: "gradually increasing", vn: "Ngày càng tăng, tích tụ", syn: "increasing, growing, escalating", ipa: "/ˈmaʊn.tɪŋ/" },
+        { w: "obtain", lvl: "b2", en: "get, acquire", vn: "Đạt được, có được", syn: "acquire, gain, secure", ipa: "/əbˈteɪn/" },
+        { w: "compass", lvl: "b2", en: "instrument for finding direction", vn: "La bàn", syn: "direction indicator, magnetic needle", ipa: "/ˈkʌm.pəs/" },
+        { w: "detect", lvl: "b2", en: "discover or identify presence", vn: "Phát hiện", syn: "notice, perceive", ipa: "/dɪˈtekt/" },
+        { w: "minute", lvl: "b2", en: "extremely small", vn: "Rất nhỏ", syn: "tiny, infinitesimal", ipa: "/maɪˈnjuːt/" },
         { w: "magnetic field", lvl: "b2", en: "area around a magnet", vn: "Từ trường", syn: "geomagnetic field", ipa: "phrase" },
         { w: "magnetite", lvl: "c1", en: "magnetic mineral", vn: "Khoáng vật từ tính", syn: "lodestone", ipa: "/ˈmæɡ.nə.taɪt/" },
         { w: "accurate", lvl: "b2", en: "correct, precise", vn: "Chính xác", syn: "exact, meticulous", ipa: "/ˈæk.jə.rət/" },
+        { w: "landmass", lvl: "c1", en: "large area of land", vn: "Khối đất liền", syn: "continent, land area", ipa: "/ˈlænd.mæs/" },
+        { w: "capable of", lvl: "b2", en: "having the ability to", vn: "Có khả năng", syn: "able to, competent to", ipa: "phrase" },
+        { w: "phenomenal", lvl: "c1", en: "remarkable, extraordinary", vn: "Phi thường, kỳ diệu", syn: "extraordinary, remarkable", ipa: "/fəˈnɒm.ɪ.nəl/" },
+        { w: "sophisticated", lvl: "c1", en: "highly developed, complex", vn: "Tinh vi, phức tạp", syn: "advanced, complex", ipa: "/səˈfɪs.tɪ.keɪ.tɪd/" },
+        { w: "cues", lvl: "c1", en: "signals or hints", vn: "Tín hiệu, gợi ý", syn: "signals, prompts, hints", ipa: "/kjuːz/" },
+        { w: "sensory", lvl: "c1", en: "relating to senses", vn: "Thuộc giác quan", syn: "perceptual, sensorial", ipa: "/ˈsen.sər.i/" },
+        { w: "perception", lvl: "c1", en: "ability to perceive, awareness", vn: "Nhận thức, tri giác", syn: "awareness, insight", ipa: "/pəˈsep.ʃən/" },
         { w: "polarized light", lvl: "c2", en: "light waves in one plane", vn: "Ánh sáng phân cực", syn: "polarized waves", ipa: "phrase" },
         { w: "calibrates", lvl: "c1", en: "adjusts precisely", vn: "Hiệu chuẩn", syn: "adjusts, sets", ipa: "/ˈkæl.ɪ.breɪts/" },
         { w: "predators", lvl: "b2", en: "animals that hunt others", vn: "Động vật săn mồi", syn: "hunters, carnivores", ipa: "/ˈpred.ə.təz/" },
         { w: "dehydration", lvl: "c1", en: "loss of water", vn: "Mất nước", syn: "drying, desiccation", ipa: "/ˌdiː.haɪˈdreɪ.ʃən/" },
         { w: "turbulent", lvl: "c1", en: "unstable and rough", vn: "Hỗn loạn", syn: "chaotic, violent", ipa: "/ˈtɜː.bjə.lənt/" },
         { w: "conducive", lvl: "c1", en: "making something possible", vn: "Có lợi", syn: "favorable, helpful", ipa: "/kənˈdjuː.sɪv/" },
+        { w: "stable", lvl: "b2", en: "steady, not likely to change", vn: "Ổn định", syn: "steady, firm, secure", ipa: "/ˈsteɪ.bəl/" },
         { w: "forecasting", lvl: "b2", en: "predicting future events", vn: "Dự báo", syn: "predicting, projecting", ipa: "/ˈfɔː.kɑː.stɪŋ/" },
         { w: "utilizing", lvl: "c1", en: "making use of", vn: "Sử dụng", syn: "using, employing", ipa: "/ˈjuː.tɪ.laɪ.zɪŋ/" },
         { w: "adept", lvl: "c1", en: "very skilled", vn: "Thành thạo", syn: "expert, proficient", ipa: "/əˈdept/" },
-        { w: "detect", lvl: "b2", en: "discover or identify presence", vn: "Phát hiện", syn: "notice, perceive", ipa: "/dɪˈtekt/" },
-        { w: "minute", lvl: "b2", en: "extremely small", vn: "Rất nhỏ", syn: "tiny, infinitesimal", ipa: "/maɪˈnjuːt/" },
         { w: "barometric pressure", lvl: "c2", en: "atmospheric pressure", vn: "Áp suất khí quyển", syn: "air pressure", ipa: "phrase" },
         { w: "visible", lvl: "b1", en: "able to be seen", vn: "Có thể nhìn thấy", syn: "perceptible, observable", ipa: "/ˈvɪz.ə.bəl/" },
         { w: "Lapwings", lvl: "b2", en: "wading birds with crest", vn: "Chim te te", syn: "peewits, plovers", ipa: "/ˈlæp.wɪŋz/" },
@@ -250,7 +253,7 @@
         tbodyEl.innerHTML += `<tr><td class="word-cell"><b style="color:var(--${item.lvl}-color)">${item.w}</b> ${levelBadge}</td><td><i>${item.ipa}</i></td><td><b>${item.vn}</b></td><td>${item.syn}</td></tr>`;
     });
 
-    // Tooltip & audio (unchanged)
+    // Tooltip & audio
     let activeTooltip = null, hideTimeout = null;
     function getTooltipContent(wordKey) {
         const entry = vocabulary.find(v => v.w.toLowerCase() === wordKey.toLowerCase());
@@ -302,7 +305,7 @@
         }
     });
 
-    // ======================= NEW QUIZ LOGIC (from q.html) =======================
+    // ======================= QUIZ LOGIC =======================
     const headingFullTexts = [
         { numeral: "i", text: "i The best moment to migrate" },
         { numeral: "ii", text: "ii The unexplained rejection of closer feeding ground" },
@@ -332,35 +335,42 @@
         const correct = correctHeadingMap[qNum];
         let reason = "";
         switch(qNum) {
-            case 1: reason = "Paragraph A: lightweight bones, feathers, fat, respiratory system → 'Physical characteristics that allow birds to migrate' (iv)."; break;
-            case 2: reason = "Paragraph B: fundamental reason is to find adequate food in winter → 'The main reason why birds migrate' (v)."; break;
-            case 3: reason = "Paragraph C: birds fly further than necessary, reject closer grounds → 'The unexplained rejection of closer feeding ground' (ii)."; break;
-            case 4: reason = "Paragraph D: young birds migrate without teaching, cuckoo example → 'Mysterious migration despite lack of teaching' (x)."; break;
-            case 5: reason = "Paragraph E: research on sun/stars, magnetic field, polarized light → 'Research findings on how birds migrate' (vii)."; break;
-            case 6: reason = "Paragraph F: weather forecasting, barometric pressure, winds → 'The influence of weather on the migration route' (iii)."; break;
-            case 7: reason = "Paragraph G: birds blown across Atlantic but survive and return → 'Successful migration despite the trouble of wind' (viii)."; break;
-            default: reason = "Refer to paragraph content.";
+            case 1: reason = "Đoạn A liệt kê các đặc điểm sinh học của chim: xương rỗng nhẹ, lông vũ được thiết kế tinh xảo tạo lực nâng và lực đẩy, hệ thống định vị vượt trội, thiết kế giữ nhiệt, hệ hô hấp hiệu quả, tích lũy mỡ. Tất cả đều là 'các đặc điểm thể chất cho phép chim di cư' → Tiêu đề iv. Các tiêu đề khác không khớp vì đoạn A không nói về lý do di cư, thời điểm, hay thời tiết."; break;
+            case 2: reason = "Đoạn B mở đầu bằng 'The fundamental reason that birds migrate is to find adequate food during the winter months' (Lý do cơ bản chim di cư là tìm đủ thức ăn vào mùa đông). Đây chính là 'lý do chính khiến chim di cư' → Tiêu đề v. Đoạn này không liên quan đến đặc điểm thể chất hay nghiên cứu định vị."; break;
+            case 3: reason = "Đoạn C nói về 'một sự thật khó hiểu: nhiều loài chim đi xa hơn mức cần thiết để tìm thức ăn và thời tiết tốt' (puzzling fact... journey much further than would be necessary). Chúng bỏ qua những vùng đất gần hơn có vẻ phù hợp để bay đến nơi xa hơn. Điều này khớp với 'việc từ chối không rõ lý do các bãi kiếm ăn gần hơn' → Tiêu đề ii."; break;
+            case 4: reason = "Đoạn D nói về 'một trong những điều bí ẩn lớn nhất là làm sao chim non biết đường đến vùng trú đông mà không có sự hướng dẫn của bố mẹ' (without parental guidance). Ví dụ chim cu cu không bao giờ gặp lại bố mẹ nhưng vẫn tìm được đường. Đây là 'cuộc di cư bí ẩn dù thiếu sự dạy dỗ' → Tiêu đề x."; break;
+            case 5: reason = "Đoạn E trình bày 'Mounting evidence has confirmed that birds use the positions of the sun and stars to obtain compass directions' (Bằng chứng ngày càng xác nhận chim dùng vị trí mặt trời và các ngôi sao để định hướng) cùng từ trường Trái Đất, ánh sáng phân cực, v.v. Đây là 'các phát hiện nghiên cứu về cách chim di cư' → Tiêu đề vii."; break;
+            case 6: reason = "Đoạn F nói về 'accurate weather forecasting and utilizing favourable winds' (dự báo thời tiết chính xác và tận dụng gió thuận), chim phản ứng với thay đổi thời tiết trước khi có dấu hiệu rõ ràng, ví dụ chim Lapwing chạy trốn đợt rét. Đây là 'ảnh hưởng của thời tiết đến tuyến di cư' → Tiêu đề iii."; break;
+            case 7: reason = "Đoạn G kể về chim Manx shearwater bay xa nhưng vẫn về tổ đúng hạn, và chim Bắc Mỹ bị gió tây thổi qua Đại Tây Dương nhưng vẫn đến châu Âu an toàn và quay về được. Đây là 'di cư thành công bất chấp trở ngại của gió' → Tiêu đề viii."; break;
+            default: reason = "Xem nội dung đoạn văn.";
         }
-        return `<strong>${selectedNumeral === correct ? '✅ Correct' : '❌ Incorrect'}</strong><br>Your heading: ${selectedNumeral ? getHeadingText(selectedNumeral) : '(none)'}<br>Correct: ${getHeadingText(correct)}<br><br>📖 ${reason}`;
+        return `<strong>${selectedNumeral === correct ? '✅ Đúng' : '❌ Sai'}</strong><br>
+        Bạn chọn: ${selectedNumeral ? getHeadingText(selectedNumeral) : '(chưa chọn)'}<br>
+        Đáp án đúng: ${getHeadingText(correct)}<br><br>
+        📖 <em>Giải thích:</em> ${reason}`;
     }
 
     function getMCQ89explanation(selectedLetters) {
         let correctCount = 0;
         for (let l of selectedLetters) if (correctMCQset.has(l)) correctCount++;
-        let feedback = `You selected: ${selectedLetters.length ? selectedLetters.join(', ') : 'none'}. Correct answers: A and C. `;
-        if (correctCount === 2) feedback += `Perfect! Both correct.`;
-        else if (correctCount === 1) feedback += `You got 1 correct.`;
-        else feedback += `None correct.`;
-        let detail = "📖 Evidence: Paragraph C 'journey much further than would be necessary' (A true). Paragraph E 'danger of dehydration ... reduced' at night (C true).";
-        return `<strong>Score: ${correctCount}/2</strong><br>${feedback}<br>${detail}`;
+        let detail = "📖 <em>Giải thích:</em> ";
+        detail += "A đúng vì đoạn C nói 'many birds journey much further than would be necessary just to find food and good weather' (nhiều loài chim bay xa hơn mức cần thiết để tìm thức ăn và thời tiết tốt). ";
+        detail += "C đúng vì đoạn E nói khi bay ban đêm 'the danger of dehydration due to flying for long periods in warm, sunlit skies is reduced' (nguy cơ mất nước do bay lâu trong bầu trời ấm có nắng bị giảm bớt). ";
+        detail += "B sai vì đoạn D nói 'Very few adults migrate with juveniles in tow' (rất ít con trưởng thành di cư cùng con non) — không có bằng chứng nhóm gia đình an toàn. ";
+        detail += "D sai vì đoạn E nói chim 'see the world with a superior sensory perception to ours' (nhìn thế giới với nhận thức giác quan vượt trội) chứ không nói thị lực sắc bén hơn. ";
+        detail += "E sai vì đoạn C/G nói nhiều loài chim biển (terns, shorebirds) di cư qua gió, không chỉ riêng shorebirds kháng gió mạnh.";
+        return `<strong>Điểm: ${correctCount}/2</strong><br>
+        Bạn chọn: ${selectedLetters.length ? selectedLetters.join(', ') : 'chưa chọn'}. Đáp án đúng: A và C.<br>
+        ${correctCount === 2 ? '🎉 Hoàn hảo! Cả hai đều đúng.' : correctCount === 1 ? 'Bạn đúng 1/2.' : 'Chưa đúng câu nào.'}<br>${detail}`;
     }
 
     function getSummaryExplanation(qKey, answer, correctAns, detail) {
         let isOk = (answer && answer.trim().toLowerCase() === correctAns.toLowerCase());
-        return `<strong>${isOk ? '✅ Correct' : '❌ Incorrect'}</strong><br>Your: "${answer || 'blank'}" | Correct: "${correctAns}"<br>📖 ${detail}`;
+        return `<strong>${isOk ? '✅ Đúng' : '❌ Sai'}</strong><br>
+        Bạn trả lời: "${answer || 'để trống'}" | Đáp án đúng: "${correctAns}"<br>
+        📖 <em>Giải thích:</em> ${detail}`;
     }
 
-    // Drag & drop helpers
     function onDragStart(e) {
         const card = e.target.closest('.heading-drag');
         if (card) {
@@ -466,7 +476,6 @@
         });
     }
 
-    // Limit checkbox selection group (max 2)
     function setupMCQLimit(groupId, maxSelections, userArrayName) {
         const group = document.getElementById(groupId);
         if (!group) return;
@@ -499,7 +508,6 @@
         checkboxes.forEach(cb => {
             cb.removeEventListener('change', handleChange);
             cb.addEventListener('change', handleChange);
-            // set initial state
             if (user[userArrayName].includes(cb.value)) cb.checked = true;
         });
         updateCounter();
@@ -517,7 +525,6 @@
         const container = document.getElementById('quiz-container');
         if (!container) return;
         let headingsHtml = `<div class="quiz-card"><div class="section-title">📌 Questions 1–7 (Matching Headings)</div><div style="margin-bottom:8px; font-size:0.7rem;"><i class="fas fa-hand-pointer"></i> Drag headings onto each paragraph box (A–G). Drag filled heading back to list to remove.</div><div class="headings-container" id="drag-headings-container"></div></div>`;
-        // MCQ 8-9 with checkbox group
         let mcqHtml = `<div class="quiz-card"><div class="section-title">📌 Questions 8 & 9 (Multiple choice)</div>
         <div style="background:#f0f4fa; padding:10px; border-radius:18px; font-size:0.7rem; margin-bottom:14px;">Which <strong>TWO</strong> of the following statements are true of bird migration? Choose <strong>TWO</strong> letters <strong>A–E</strong>. Write the correct letters in boxes 8 and 9.</div>
         <div class="multi-group" id="group89">`;
@@ -547,7 +554,6 @@
         container.innerHTML = headingsHtml + mcqHtml + summaryHtml + `<button id="submitBtn" class="btn-submit" ${submitted ? 'disabled' : ''}>✅ Check Answers & Show Explanations</button>`;
         rebuildHeadingsContainer();
 
-        // Sync drop slots with user data
         for (let i=1; i<=7; i++) {
             const slot = document.getElementById(`drop-${i}`);
             if (slot) {
@@ -555,7 +561,6 @@
                 else { slot.innerHTML = `<strong>${i}</strong>`; slot.classList.remove('filled'); slot.setAttribute('draggable', 'false'); }
             }
         }
-        // Attach drag-drop events to slots
         document.querySelectorAll('.drop-slot-passage').forEach(slot => {
             slot.removeEventListener('dragover', onDragOver);
             slot.removeEventListener('dragleave', onDragLeave);
@@ -575,7 +580,6 @@
         }
 
         if (!submitted) {
-            // sync checkboxes group for 8-9
             const group89 = document.getElementById('group89');
             if (group89) {
                 const checkboxes = group89.querySelectorAll('input[type="checkbox"]');
@@ -586,12 +590,10 @@
                     });
                 });
             }
-            // input listeners for sentence completion
             for (let i=10; i<=13; i++) {
                 let inp = document.getElementById(`inp-${i}`);
                 if (inp) inp.addEventListener('input', (e) => { user[`q${i}`] = e.target.value.trim(); });
             }
-            // initialize user.mcq89 from any checked
             if (group89) {
                 let initialSelected = Array.from(group89.querySelectorAll('input:checked')).map(cb=>cb.value);
                 user.mcq89 = initialSelected;
@@ -599,14 +601,13 @@
             setupMCQLimit('group89', 2, 'mcq89');
             document.getElementById('submitBtn')?.addEventListener('click', evaluateQuiz);
         } else {
-            evaluateQuiz(); // show explanations if already submitted
+            evaluateQuiz();
         }
     }
 
     function evaluateQuiz() {
         submitted = true;
         let totalScore = 0;
-        // Headings 1-7
         for (let i=1; i<=7; i++) {
             let correct = correctHeadingMap[i];
             let isOk = (user[i] === correct);
@@ -621,19 +622,17 @@
             }
             if (expDiv) { expDiv.innerHTML = getHeadingExplanation(i, user[i]); expDiv.classList.add('show'); }
         }
-        // MCQ 8-9
         let correctCount = 0;
         for (let l of user.mcq89) if (correctMCQset.has(l)) correctCount++;
         totalScore += correctCount;
         let expMcq = document.getElementById('exp-mcq89');
         if (expMcq) { expMcq.innerHTML = getMCQ89explanation(user.mcq89); expMcq.classList.add('show'); }
 
-        // Sentence completion 10-13
         let sumDetails = {
-            q10: { detail: "Paragraph D: 'without parental guidance' → 'parental guidance'.", correct: "parental guidance" },
-            q11: { detail: "Paragraph E: 'use ... sun and stars to obtain compass directions' → 'compass'.", correct: "compass" },
-            q12: { detail: "Paragraph E: 'Daytime predators are avoided' → 'daytime predators'.", correct: "daytime predators" },
-            q13: { detail: "Paragraph F: 'react to weather changes before there is any visible sign' → 'visible signs'.", correct: "visible signs" }
+            q10: { detail: "Đoạn D: 'how young birds know how to find the traditional wintering areas without parental guidance' — chim non tìm được vùng trú đông mà không có sự hướng dẫn của bố mẹ. Từ cần điền là 'parental guidance' (sự hướng dẫn của bố mẹ).", correct: "parental guidance" },
+            q11: { detail: "Đoạn E: 'birds use the positions of the sun and stars to obtain compass directions' — chim dùng vị trí mặt trời và các ngôi sao để có được hướng la bàn. Từ cần điền là 'compass' (la bàn).", correct: "compass" },
+            q12: { detail: "Đoạn E: 'Daytime predators are avoided' — khi bay đêm, chim tránh được động vật săn mồi ban ngày. Cụm từ cần điền là 'daytime predators' (động vật săn mồi ban ngày).", correct: "daytime predators" },
+            q13: { detail: "Đoạn F: 'birds react to weather changes before there is any visible sign of them' — chim phản ứng với thay đổi thời tiết trước khi có bất kỳ dấu hiệu hữu hình nào. Cụm từ cần điền là 'visible signs' (dấu hiệu hữu hình/nhìn thấy được).", correct: "visible signs" }
         };
         let sumHtml = "<strong>📋 Sentence Completion (10–13):</strong><br>";
         for (let i=10; i<=13; i++) {
@@ -648,7 +647,6 @@
         if (sumExp) { sumExp.innerHTML = sumHtml; sumExp.classList.add('show'); }
 
         document.getElementById('scoreDisplay').innerText = `${totalScore} / 13`;
-        // Disable all interactive elements
         document.querySelectorAll('input, select, .heading-drag, .drop-slot-passage, .btn-submit').forEach(el => {
             if (el.id !== 'resetQuizBtn') {
                 el.disabled = true;
@@ -667,7 +665,6 @@
     }
 
     document.getElementById('resetQuizBtn')?.addEventListener('click', resetAll);
-    // Initial render
     renderQuiz();
 </script>
 </body>
